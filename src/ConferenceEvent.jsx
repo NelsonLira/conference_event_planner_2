@@ -68,28 +68,22 @@ const ConferenceEvent = () => {
     const calculateTotalCost = (section) => {
         let totalCost = 0;
         if (section === "venue") {
-          venueItems.forEach((item) => {
-            totalCost += item.cost * item.quantity;
-          });
-        }
-
-        if (section === "av") {
+            venueItems.forEach((item) => {
+                totalCost += item.cost * item.quantity;
+            });
+        } else if (section === "av") {
             avItems.forEach((item) => {
-              totalCost += item.cost * item.quantity;
+                totalCost += item.cost * item.quantity;
             });
-          }
-
-          if (section === "meals") {
+        } else if (section === "meals") {
             mealsItems.forEach((item) => {
-                if(item.selected) {
-              totalCost += item.cost * item.quantity;
+                if (item.selected) {
+                  totalCost += item.cost * numberOfPeople;
                 }
-            });
-          }
-
-
-        return totalCost;
-      };
+              });
+        }
+    return totalCost;
+    };
 
 
 
@@ -231,8 +225,8 @@ const ConferenceEvent = () => {
                                 <div className="input-container venue_selection">
                                     <label htmlFor="numberOfPeople"><h3>Number of People:</h3></label>
                                     <input type="number" className="input_box5" id="numberOfPeople" value={numberOfPeople}
-                                    onChange={(e) =>setNumberOfPeople(parseInt(e.target.value))}
-                                    min="1"
+                                        onChange={(e) => setNumberOfPeople(parseInt(e.target.value))}
+                                        min="1"
                                     />
                                 </div>
 
